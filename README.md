@@ -61,13 +61,13 @@ Three sub-stages:
 | Recall | 0.541 |
 | F1 Score | 0.514 |
 
-The primary limitation is pet name detection — names like "Novaa", "Lumman", "Lunah" are unusual tokens that general-purpose NER models don't recognise. The PetEVAL paper itself identifies this as one of the hardest challenges in veterinary de-identification. A fine-tuned domain-specific model (e.g., PetBERT) would improve recall.
+The primary limitation is pet name detection, names like "Novaa", "Lumman", "Lunah" are unusual tokens that general-purpose NER models don't recognise. The PetEVAL paper itself identifies this as one of the hardest challenges in veterinary de-identification. A fine-tuned domain-specific model (e.g., PetBERT) would improve recall.
 
-### Stage 4: Data Quality Scoring (`quality.py`)
+### Stage 4: Data Quality Scoring (`dataquality.py`)
 
 Six dimensions scored 0–1, computed on both the raw input and the pipeline output:
 
-**Completeness** — proportion of expected fields that are present and non-empty. **Accuracy** — proportion of field values that match canonical vocabularies. **Consistency** — cross-field logical checks (weight 0.1–100kg, temperature 35–42°C, age 0–30 years). **Validity** — format validation (numeric values have units, text fields are non-empty). **Uniqueness** — duplicate detection using raw text as a composite key. **Standardisation rate** — proportion of extracted terms successfully mapped to canonical forms.
+**Completeness** — proportion of expected fields that are present and non-empty. **Accuracy** : proportion of field values that match canonical vocabularies. **Consistency** : cross-field logical checks (weight 0.1–100kg, temperature 35–42°C, age 0–30 years). **Validity** : format validation (numeric values have units, text fields are non-empty). **Uniqueness** : duplicate detection using raw text as a composite key. **Standardisation rate** : proportion of extracted terms successfully mapped to canonical forms.
 
 **Quality Improvement:**
 | Dimension | Before | After | Delta |
@@ -83,21 +83,24 @@ Six dimensions scored 0–1, computed on both the raw input and the pipeline out
 ## Project Structure
 
 vet-clinical-nlp-pipeline/
+│
 ├── data/
 │   ├── raw/
 │   │   └── peteval_records.json
+│   │
 │   └── outputs/
 │       ├── peteval_extracted.json
 │       ├── peteval_standardised.json
 │       ├── peteval_deidentified.json
 │       └── peteval_final.json
+│
 ├── src/
 │   ├── load_data.py
 │   ├── extract.py
 │   ├── standardise.py
 │   ├── deidentify.py
-│   ├── dataquality.py
-│   └── pipeline.py
+│   └── quality.py
+│
 ├── requirements.txt
 └── README.md
 
@@ -126,11 +129,15 @@ hf auth login
 
 ### Running the Pipeline
 
-```bash
-python src/pipeline.py
-```
+Run each stage in order:
 
-This runs all four stages sequentially and produces the final output with quality scores.
+```bash
+python src/load_data.py
+python src/extract.py
+python src/standardise.py
+python src/deidentify.py
+python src/quality.py
+```
 
 ## Dataset
 
