@@ -82,17 +82,20 @@ Six dimensions scored 0–1, computed on both the raw input and the pipeline out
 
 ## Project Structure
 
+## Project Structure
+
+```text
 vet-clinical-nlp-pipeline/
 │
 ├── data/
-│   ├── raw/
-│   │   └── peteval_records.json
-│   │
-│   └── outputs/
-│       ├── peteval_extracted.json
-│       ├── peteval_standardised.json
-│       ├── peteval_deidentified.json
-│       └── peteval_final.json
+│   └── raw/
+│       └── peteval_records.json
+│
+├── outputs/
+│   ├── peteval_extracted.json
+│   ├── peteval_standardised.json
+│   ├── peteval_deidentified.json
+│   └── peteval_final.json
 │
 ├── src/
 │   ├── load_data.py
@@ -103,7 +106,7 @@ vet-clinical-nlp-pipeline/
 │
 ├── requirements.txt
 └── README.md
-
+```
 ## Setup
 
 ### Prerequisites
