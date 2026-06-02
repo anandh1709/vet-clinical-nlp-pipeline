@@ -82,8 +82,6 @@ Six dimensions scored 0–1, computed on both the raw input and the pipeline out
 
 ## Project Structure
 
-## Project Structure
-
 ```text
 vet-clinical-nlp-pipeline/
 │
