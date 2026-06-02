@@ -1,6 +1,6 @@
 # Veterinary Clinical NLP Pipeline
 
-An end-to-end NLP pipeline for standardising and de-identifying veterinary clinical records. Built on the [PetEVAL](https://huggingface.co/datasets/SAVSNET/PetEVAL) benchmark dataset — 4,999 real-world veterinary electronic health records from UK first-opinion practices collected through the Small Animal Veterinary Surveillance Network (SAVSNET).
+An end-to-end NLP pipeline for standardising and de-identifying veterinary clinical records. Built on the [PetEVAL](https://huggingface.co/datasets/SAVSNET/PetEVAL) benchmark dataset, 4,999 real-world veterinary electronic health records from UK first-opinion practices collected through the Small Animal Veterinary Surveillance Network (SAVSNET).
 
 ## Motivation
 
@@ -10,7 +10,7 @@ This project addresses three problems simultaneously: extracting structured info
 
 ## Pipeline Architecture
 
-Raw clinical notes → **Entity Extraction** → **Standardisation** → **De-identification** → **Data Quality Scoring** → Clean, standardised, de-identified records with quality metrics.
+Raw clinical notes -> **Entity Extraction** -> **Standardisation** -> **De-identification** -> **Data Quality Scoring** -> Clean, standardised, de-identified records with quality metrics.
 
 ### Stage 1: Entity Extraction (`extract.py`)
 
